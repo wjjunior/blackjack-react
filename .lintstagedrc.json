@@ -1,0 +1,8 @@
+{
+  "*.{ts, tsx}": ["tsc --pretty --noEmit"],
+  "*.{js,ts,tsx}": [
+    "npx eslint --ignore-path .eslintignore --fix .",
+    "prettier --ignore-path .gitignore --write"
+  ],
+  "*.{json}": ["prettier --ignore-path .gitignore --write"]
+}
