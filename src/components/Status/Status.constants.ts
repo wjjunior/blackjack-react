@@ -8,7 +8,7 @@ export enum GameStatus {
 
 export const statusMessage: Record<GameStatus, string> = {
   [GameStatus.Bust]: 'Bust!',
-  [GameStatus.New]: 'Hit or Stand?',
+  [GameStatus.New]: 'Hit or Stay?',
   [GameStatus.Win]: 'You Win!',
   [GameStatus.Lose]: 'You lose!',
   [GameStatus.Tie]: 'Tie!',

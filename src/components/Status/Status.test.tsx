@@ -4,7 +4,7 @@ import Status, { StatusProps } from './Status'
 import { GameStatus, statusMessage } from './Status.constants'
 
 describe('Status component', () => {
-  it('renders correct status message for Bust status', () => {
+  it('should render the correct status message for Bust status', () => {
     const { getByText } = getRenderer({ status: GameStatus.Bust })
 
     const bustMessage = getByText(statusMessage[GameStatus.Bust])
@@ -12,7 +12,7 @@ describe('Status component', () => {
     expect(bustMessage).toBeInTheDocument()
   })
 
-  it('renders correct status message for New status', () => {
+  it('should render the correct status message for New status', () => {
     const { getByText } = getRenderer({ status: GameStatus.New })
 
     const newMessage = getByText(statusMessage[GameStatus.New])
@@ -20,7 +20,7 @@ describe('Status component', () => {
     expect(newMessage).toBeInTheDocument()
   })
 
-  it('renders correct status message for Win status', () => {
+  it('should render the correct status message for Win status', () => {
     const { getByText } = getRenderer({ status: GameStatus.Win })
 
     const winMessage = getByText(statusMessage[GameStatus.Win])
@@ -28,7 +28,7 @@ describe('Status component', () => {
     expect(winMessage).toBeInTheDocument()
   })
 
-  it('renders correct status message for Lose status', () => {
+  it('should render the correct status message for Lose status', () => {
     const { getByText } = getRenderer({ status: GameStatus.Lose })
 
     const loseMessage = getByText(statusMessage[GameStatus.Lose])
@@ -36,7 +36,7 @@ describe('Status component', () => {
     expect(loseMessage).toBeInTheDocument()
   })
 
-  it('renders correct status message for Tie status', () => {
+  it('should render the correct status message for Tie status', () => {
     const { getByText } = getRenderer({ status: GameStatus.Tie })
 
     const tieMessage = getByText(statusMessage[GameStatus.Tie])
