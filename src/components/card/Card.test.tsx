@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 import Card, { CardProps } from './Card'
 
 describe('Card component', () => {
-  it('renders with correct value and suit', () => {
+  it('should render with correct value and suit', () => {
     const { getByText } = getRenderer({ suit: 'spades', value: '5' })
 
     const valueElement = getByText('5')
@@ -13,14 +13,26 @@ describe('Card component', () => {
     expect(suitElement).toBeInTheDocument()
   })
 
-  it('renders with correct styles for different suits', () => {
+  it('should render with correct styles for different suits', () => {
     const { container } = getRenderer({ suit: 'hearts', value: '10' })
 
     const cardElement = container.firstChild as HTMLElement
 
     expect(cardElement).toHaveStyle('color: rgb(255, 0, 0)')
   })
+
+  it('should render hidden card when showHiddenCard prop is true', () => {
+    const { getByTestId } = getRenderer({ showHiddenCard: true })
+
+    const hiddenCard = getByTestId('hidden-card')
+
+    expect(hiddenCard).toBeInTheDocument()
+  })
 })
 
-const getRenderer = ({ suit = 'hearts', value = '10' }: CardProps) =>
-  render(<Card value={value} suit={suit} />)
+const getRenderer = ({
+  suit = 'hearts',
+  value = '10',
+  showHiddenCard = false,
+}: CardProps) =>
+  render(<Card value={value} suit={suit} showHiddenCard={showHiddenCard} />)
