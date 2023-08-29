@@ -11,7 +11,10 @@ const Card: React.FC<CardProps> = ({ value, suit, showHiddenCard = false }) => {
   return (
     <>
       {showHiddenCard ? (
-        <StyledCard hiddenCard={showHiddenCard} data-testid="hidden-card"></StyledCard>
+        <StyledCard
+          hiddencard={showHiddenCard.toString()}
+          data-testid="hidden-card"
+        ></StyledCard>
       ) : (
         <StyledCard suit={suit as keyof typeof CardSuit}>
           <div>

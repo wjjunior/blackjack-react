@@ -6,13 +6,13 @@ import { CardSuit } from './Card.constants'
 
 export const StyledCard = styled(Card)<{
   suit?: keyof typeof CardSuit
-  hiddenCard?: boolean
-}>(({ theme, suit, hiddenCard }) => ({
+  hiddencard?: string
+}>(({ theme, suit, hiddencard }) => ({
   width: 120,
   height: 260,
   margin: 10,
   padding: '0.5em 1.5em',
-  backgroundImage: hiddenCard ? `url(${BgImage})` : undefined,
+  backgroundImage: hiddencard ? `url(${BgImage})` : undefined,
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'center center',
   borderRadius: 15,
