@@ -6,6 +6,8 @@ export const StyledHandContainer = styled(Box)({
   alignItems: 'center',
   flexDirection: 'column',
   margin: '0.5em',
+  padding: '0.5em',
+  border: '5px solid white',
 })
 
 export const StyledCardContainer = styled('div')({

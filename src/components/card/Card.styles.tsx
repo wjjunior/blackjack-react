@@ -13,6 +13,7 @@ export const StyledCard = styled(Card)<{
   margin: 10,
   padding: '0.5em 1.5em',
   backgroundImage: hiddencard ? `url(${BgImage})` : undefined,
+  backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'center center',
   borderRadius: 15,
@@ -29,13 +30,25 @@ export const StyledCard = styled(Card)<{
   },
 }))
 
-export const StyledValue = styled(Typography)({
+export const StyledValue = styled(Typography)(({ theme }) => ({
   fontSize: '400%',
   margin: 0,
-})
+  [theme.breakpoints.down('md')]: {
+    fontSize: '300%',
+  },
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '150%',
+  },
+}))
 
-export const StyledSuit = styled(Typography)({
+export const StyledSuit = styled(Typography)(({ theme }) => ({
   fontSize: '600%',
   margin: 0,
   textAlign: 'center',
-})
+  [theme.breakpoints.down('md')]: {
+    fontSize: '500%',
+  },
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '250%',
+  },
+}))

@@ -17,7 +17,7 @@ export const ButtonStyled = styled(Button)(({ disabled }) => ({
   borderRadius: '5px',
   overflow: 'hidden',
   cursor: 'pointer',
-  margin: '36px',
+  margin: 5,
   background: `url(${WoodBackground})`,
   opacity: disabled ? 0.5 : 1,
 
