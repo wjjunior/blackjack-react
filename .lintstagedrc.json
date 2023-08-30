@@ -4,5 +4,5 @@
     "npx eslint --ignore-path .eslintignore --fix .",
     "prettier --ignore-path .gitignore --write"
   ],
-  "*.{json}": ["prettier --ignore-path .gitignore --write"]
+  "*.json": ["prettier --ignore-path .gitignore --write"]
 }
