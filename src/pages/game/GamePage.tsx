@@ -57,6 +57,8 @@ const GamePage: React.FC = () => {
   })
 
   const [showHiddenCard, setShowHiddenCard] = useState(true)
+  const [countdownStartTime, setCountdownStartTime] = useState<number>(0)
+  const [countdownMaxTime, setCountdownMaxTime] = useState<number>(0)
 
   const getCardValue = (cardValue: string, total: number, acesCount: number): number => {
     if (cardValue === 'A') {
@@ -82,21 +84,27 @@ const GamePage: React.FC = () => {
       dealerScore: number
       dealerCards: number
     }) => {
-      if (userScore === 21) {
-        setGameStatus(GameStatus.Win)
+      let newStatus = GameStatus.New
+      if (userScore === 21 || (userScore <= 21 && dealerScore > 21)) {
+        newStatus = GameStatus.Win
       } else if (userScore > 21) {
-        setGameStatus(GameStatus.Bust)
+        newStatus = GameStatus.Bust
       } else if (dealerCards >= 2) {
-        if (userScore > dealerScore || dealerScore > 21) {
-          setGameStatus(GameStatus.Win)
+        if (userScore > dealerScore) {
+          newStatus = GameStatus.Win
         } else if (dealerScore > userScore) {
-          setGameStatus(GameStatus.Lose)
+          newStatus = GameStatus.Lose
         } else {
-          setGameStatus(GameStatus.Tie)
+          newStatus = GameStatus.Tie
         }
       }
+      if (newStatus !== GameStatus.New) {
+        setCountdownStartTime(Date.now())
+        setCountdownMaxTime(Number(delay))
+      }
+      setGameStatus(newStatus)
     },
-    [setGameStatus],
+    [delay],
   )
 
   useEffect(() => {
@@ -135,6 +143,7 @@ const GamePage: React.FC = () => {
 
     setGameStatus(GameStatus.New)
     setShowHiddenCard(true)
+    setCountdownMaxTime(0)
   }
 
   const hit = () => {
@@ -172,6 +181,8 @@ const GamePage: React.FC = () => {
           stayEvent={stay}
           status={gameStatus}
           resetEvent={resetGame}
+          countdownMaxTime={countdownMaxTime}
+          countdownStartTime={countdownStartTime}
         />
         <Grid container justifyContent="center" alignItems="center" spacing={2}>
           <Grid item xs="auto">

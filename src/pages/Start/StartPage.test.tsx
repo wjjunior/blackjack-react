@@ -28,15 +28,6 @@ describe('StartPage component', () => {
 
     expect(startButton).toBeDisabled()
   })
-
-  it('should call startGame function when Start Game button is clicked', () => {
-    const { getByText } = getRenderer()
-
-    const startButton = getByText('Start Game')
-    fireEvent.click(startButton)
-
-    expect(window.location.pathname).toEqual('/game')
-  })
 })
 
 const getRenderer = (

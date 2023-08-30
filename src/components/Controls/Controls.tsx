@@ -1,3 +1,4 @@
+import { CountdownButton } from '../CountdownButton/CountdownButton'
 import { GameStatus } from '../Status/Status.constants'
 
 import { ControlsContainer, ButtonStyled, ButtonDiv } from './Controls.styles'
@@ -7,6 +8,8 @@ export type ControlsProps = {
   stayEvent: () => void
   status: GameStatus
   resetEvent: () => void
+  countdownMaxTime: number
+  countdownStartTime: number
 }
 
 const Controls: React.FC<ControlsProps> = ({
@@ -14,6 +17,8 @@ const Controls: React.FC<ControlsProps> = ({
   stayEvent,
   status,
   resetEvent,
+  countdownMaxTime,
+  countdownStartTime,
 }) => {
   const isGameNew = status === GameStatus.New
 
@@ -25,9 +30,13 @@ const Controls: React.FC<ControlsProps> = ({
       <ButtonStyled onClick={stayEvent} disabled={!isGameNew}>
         <ButtonDiv>Stay</ButtonDiv>
       </ButtonStyled>
-      <ButtonStyled onClick={resetEvent} disabled={isGameNew}>
-        <ButtonDiv>Reset</ButtonDiv>
-      </ButtonStyled>
+      <CountdownButton
+        onClick={resetEvent}
+        buttonLabel="Reset"
+        maxTime={countdownMaxTime}
+        startTime={countdownStartTime}
+        isDisabled={isGameNew}
+      />
     </ControlsContainer>
   )
 }
