@@ -1,4 +1,5 @@
 # Blackjack (D3)
+![Blackjack](https://github.com/wjjunior/blackjack-react/assets/13741072/700bb928-039a-4c7f-a35a-8b71a9251d38)
 
 > ## :page_with_curl: Resources
 
@@ -44,9 +45,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
-
-> ## Considerations
-
-> ### Challenges
-
-> ## ToDo
