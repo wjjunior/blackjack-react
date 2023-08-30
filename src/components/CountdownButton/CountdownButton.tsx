@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { ButtonStyled, ButtonDiv } from './CountdownButton.styles'
+import WoodButton from '../WoodButton/WoodButton'
 
 type CountdownButtonProps = {
   buttonLabel: string
@@ -54,10 +54,10 @@ export const CountdownButton = ({
   }
 
   return (
-    <ButtonStyled onClick={onClick} disabled={isTimerActive || isDisabled}>
-      <ButtonDiv>
-        {isTimerActive && maxTime > 0 ? formatTime(remainingTime) : buttonLabel}
-      </ButtonDiv>
-    </ButtonStyled>
+    <WoodButton
+      label={isTimerActive && maxTime > 0 ? formatTime(remainingTime) : buttonLabel}
+      onClick={onClick}
+      isDisabled={isTimerActive || isDisabled}
+    />
   )
 }

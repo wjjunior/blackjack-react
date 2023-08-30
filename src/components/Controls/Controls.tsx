@@ -1,7 +1,8 @@
 import { CountdownButton } from '../CountdownButton/CountdownButton'
 import { GameStatus } from '../Status/Status.constants'
+import WoodButton from '../WoodButton/WoodButton'
 
-import { ControlsContainer, ButtonStyled, ButtonDiv } from './Controls.styles'
+import { ControlsContainer } from './Controls.styles'
 
 export type ControlsProps = {
   hitEvent: () => void
@@ -24,12 +25,8 @@ const Controls: React.FC<ControlsProps> = ({
 
   return (
     <ControlsContainer>
-      <ButtonStyled onClick={hitEvent} disabled={!isGameNew}>
-        <ButtonDiv>Hit</ButtonDiv>
-      </ButtonStyled>
-      <ButtonStyled onClick={stayEvent} disabled={!isGameNew}>
-        <ButtonDiv>Stay</ButtonDiv>
-      </ButtonStyled>
+      <WoodButton onClick={hitEvent} isDisabled={!isGameNew} label="Hit" />
+      <WoodButton onClick={stayEvent} isDisabled={!isGameNew} label="Stay" />
       <CountdownButton
         onClick={resetEvent}
         buttonLabel="Reset"

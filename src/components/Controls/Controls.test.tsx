@@ -70,6 +70,8 @@ const getRenderer = ({
   stayEvent = vi.fn(),
   resetEvent = vi.fn(),
   status = GameStatus.New,
+  countdownMaxTime = 0,
+  countdownStartTime = 0,
 }: Partial<ControlsProps>) => {
   return render(
     <Controls
@@ -77,6 +79,8 @@ const getRenderer = ({
       stayEvent={stayEvent}
       status={status}
       resetEvent={resetEvent}
+      countdownMaxTime={countdownMaxTime}
+      countdownStartTime={countdownStartTime}
     />,
   )
 }
