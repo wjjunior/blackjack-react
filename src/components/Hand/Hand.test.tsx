@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react'
+import { ComponentProps } from 'react'
 
-import Hand, { HandProps } from './Hand'
+import Hand from './Hand'
 
 describe('Hand component', () => {
   it('should render the title correctly', () => {
@@ -39,6 +40,6 @@ const getRenderer = ({
     { value: 'K', suit: 'spades' },
   ],
   showHiddenCard = false,
-}: Partial<HandProps>) => {
+}: Partial<ComponentProps<typeof Hand>>) => {
   return render(<Hand title={title} cards={cards} showHiddenCard={showHiddenCard} />)
 }

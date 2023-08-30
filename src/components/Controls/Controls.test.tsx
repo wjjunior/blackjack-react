@@ -1,9 +1,10 @@
 import { fireEvent, render } from '@testing-library/react'
+import { ComponentProps } from 'react'
 import { vi } from 'vitest'
 
 import { GameStatus } from '../Status/Status.constants'
 
-import Controls, { ControlsProps } from './Controls'
+import Controls from './Controls'
 
 describe('Controls component', () => {
   it('should render buttons with correct labels', () => {
@@ -72,7 +73,7 @@ const getRenderer = ({
   status = GameStatus.New,
   countdownMaxTime = 0,
   countdownStartTime = 0,
-}: Partial<ControlsProps>) => {
+}: Partial<ComponentProps<typeof Controls>>) => {
   return render(
     <Controls
       hitEvent={hitEvent}

@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react'
+import { ComponentProps } from 'react'
 
-import Status, { StatusProps } from './Status'
+import Status from './Status'
 import { GameStatus, statusMessage } from './Status.constants'
 
 describe('Status component', () => {
@@ -45,6 +46,8 @@ describe('Status component', () => {
   })
 })
 
-const getRenderer = ({ status = GameStatus.New }: Partial<StatusProps>) => {
+const getRenderer = ({
+  status = GameStatus.New,
+}: Partial<ComponentProps<typeof Status>>) => {
   return render(<Status status={status} />)
 }

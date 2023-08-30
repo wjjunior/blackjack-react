@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react'
+import { ComponentProps } from 'react'
 
-import Card, { CardProps } from './Card'
+import Card from './Card'
 
 describe('Card component', () => {
   it('should render with correct value and suit', () => {
@@ -34,5 +35,5 @@ const getRenderer = ({
   suit = 'hearts',
   value = '10',
   showHiddenCard = false,
-}: CardProps) =>
+}: Partial<ComponentProps<typeof Card>>) =>
   render(<Card value={value} suit={suit} showHiddenCard={showHiddenCard} />)
