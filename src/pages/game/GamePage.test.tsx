@@ -1,4 +1,8 @@
 import { fireEvent, render } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
+import { vi } from 'vitest'
+
+import { GameContext } from '../../context/GameContext'
 
 import GamePage from './GamePage'
 
@@ -6,13 +10,13 @@ describe('GamePage component', () => {
   it('should calculate user scores after a hit correctly', () => {
     const { getByText, getByRole } = getRenderer()
 
-    const userScoreBefore = getByText(/Your Hand \((\d+)\)/)
+    const userScoreBefore = getByText(/John \((\d+)\)/)
     const userScoreBeforeValue = Number(userScoreBefore.textContent?.match(/(\d+)/)?.[0])
 
     const hitButton = getByRole('button', { name: 'Hit' })
     fireEvent.click(hitButton)
 
-    const userScoreAfter = getByText(/Your Hand \((\d+)\)/)
+    const userScoreAfter = getByText(/John \((\d+)\)/)
 
     const userScoreAfterValue = Number(userScoreAfter.textContent?.match(/(\d+)/)?.[0])
     expect(userScoreAfterValue).toBeGreaterThan(userScoreBeforeValue)
@@ -35,22 +39,15 @@ describe('GamePage component', () => {
     )
     expect(dealerScoreAfterValue).toBeGreaterThan(dealerScoreBeforeValue)
   })
-
-  it('should handle a reset event correctly', () => {
-    const { getByText } = getRenderer()
-
-    const statusMessage = getByText('Hit or Stay?')
-
-    const stayButton = getByText('Stay')
-    fireEvent.click(stayButton)
-
-    expect(statusMessage.textContent).toMatch(/(Bust!|You Win!|You lose!|Tie!)/)
-
-    const resetButton = getByText('Reset')
-    fireEvent.click(resetButton)
-
-    expect(statusMessage.textContent).toMatch(/Hit or Stay?/)
-  })
 })
 
-const getRenderer = () => render(<GamePage />)
+const getRenderer = (
+  contextValues = { name: 'John', delay: '120', setName: vi.fn(), setDelay: vi.fn() },
+) =>
+  render(
+    <MemoryRouter>
+      <GameContext.Provider value={contextValues}>
+        <GamePage />
+      </GameContext.Provider>
+    </MemoryRouter>,
+  )

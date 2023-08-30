@@ -1,11 +1,13 @@
 import { Grid } from '@mui/material'
 import React, { useCallback, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import jsonData from '../../assets/deck.json'
 import Controls from '../../components/Controls/Controls'
 import Hand from '../../components/Hand/Hand'
 import Status from '../../components/Status/Status'
 import { GameStatus } from '../../components/Status/Status.constants'
+import { useGameContext } from '../../hooks/useGameContext'
 
 import { StyledGrid } from './GamePage.styles'
 
@@ -20,8 +22,10 @@ type GameCards = {
 }
 
 const GamePage: React.FC = () => {
+  const { name, delay } = useGameContext()
   const data = JSON.parse(JSON.stringify(jsonData.cards))
   const [deck, setDeck] = useState<DeckCard[]>(data)
+  const navigate = useNavigate()
 
   const drawCards = (amount = 1): DeckCard[] => {
     const cards: DeckCard[] = []
@@ -116,6 +120,12 @@ const GamePage: React.FC = () => {
     })
   }, [calculate, gameCards, updateGameStatus])
 
+  useEffect(() => {
+    if (!name || !delay) {
+      navigate('/')
+    }
+  }, [name, delay, navigate])
+
   const resetGame = () => {
     setDeck(data)
     setGameCards({
@@ -173,7 +183,7 @@ const GamePage: React.FC = () => {
           </Grid>
           <Grid item xs="auto">
             <Hand
-              title={`Your Hand (${gameScore.userScore})`}
+              title={`${name} (${gameScore.userScore})`}
               cards={gameCards.userCards}
             />
           </Grid>
