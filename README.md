@@ -1,4 +1,7 @@
 # Blackjack (D3)
+
+URL: https://blackjack-react-ten.vercel.app/
+
 ![Blackjack](https://github.com/wjjunior/blackjack-react/assets/13741072/700bb928-039a-4c7f-a35a-8b71a9251d38)
 
 > ## :page_with_curl: Resources
