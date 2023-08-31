@@ -1,8 +1,6 @@
 # Blackjack (D3)
 ![Blackjack](https://github.com/wjjunior/blackjack-react/assets/13741072/700bb928-039a-4c7f-a35a-8b71a9251d38)
 
-The application performs the distribution of playing cards between the user and the dealer, ensuring that the cards are not repeated and allows the user to restart the game.
-
 > ## :page_with_curl: Resources
 
 - React 18
